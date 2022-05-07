@@ -1,0 +1,91 @@
+{
+    "name": "『 علوش 』『Musíc』",
+    "description": "بوت تشغيل الموسيقي والفديو في لالمحادثة الصوتيى",
+    "logo": "https://telegra.ph/file/cbefab50d720cd7cb5ca8.jpg",
+    "keywords": [
+        "محادثات صوتية",
+        "بوتات تيلجرام",
+        "تشغيل فديو",
+        "بيوجرام"
+    ],
+    "website": "https://t.me/xb_bk",
+    "repository": "https://github.com/alfaransy/REWYT",
+    "success_url": "https://t.me/xb_bp",
+    "env": {
+        "API_ID": {
+            "description": "api id تستطيع جلبه من my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "api hash تستطيع جلبه من.telegram.org",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "التوكين اللخاص بك من @BotFather",
+            "required": true
+        },
+        "ALIVE_IMG": {
+            "description": "صوره السورس",
+            "required": true
+        },
+        "BOT_USERNAME": {
+            "description": "معرف بوتك @BotFather",
+            "required": true
+        },
+        "BOT_NAME": {
+            "description": "اسم بوتك الموجود ب @BotFather",
+            "required": true
+        },
+        "ASSISTANT_NAME": {
+            "description": "معرف الحساب المساعد بدون @",
+            "required": true
+        },
+        "SESSION_NAME": {
+            "description": "جلسة البيوجرام",
+            "required": true
+        },
+        "SUDO_USERS": {
+            "description": "ايدي المطورين",
+            "required": true,
+            "value": "1047777673"
+        },
+        "GROUP_SUPPORT": {
+            "description": "معرف جروب الدعم بدون @",
+            "required": true,
+            "value": "xb_bk"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "معرف قناتك بدون @",
+            "required": true,
+            "value": "xb_bp"
+        },
+        "OWNER_NAME": {
+            "description": "معرف المطور بدون @",
+            "required": true,
+            "value": "E_T_B"
+        },
+        "ALIVE_NAME": {
+            "description": "اسم حسابك علي التيلجرام",
+            "required": true
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "heroku/nodejs"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "container"
+}
