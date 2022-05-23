@@ -58,7 +58,7 @@ async def alive(client: Client, message: Message):
             [
                 InlineKeyboardButton("✨ كروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "↬ 𝙇𝒊𝙤𝙉 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "↬ 𝙹𝙴𝙿𝚃𝙷𝙾𝙽 𝙰𝚁𝙰𝙱 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -82,12 +82,12 @@ async def alive(client: Client, message: Message):
     )
 
 
-@Client.on_message(command2(["بينج","السرعه","البينج","السرعة"]))
+@Client.on_message(command2(["بنك","السرعه","البنك","السرعة"]))
 async def ping_pong(client: Client, message: Message):
     start = time()
-    m_reply = await message.reply_text("جاري قياس البينج...")
+    m_reply = await message.reply_text("جاري قياس البنك...")
     delta_ping = time() - start
-    await m_reply.edit_text("🏓 بينج\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
+    await m_reply.edit_text("🏓 بنك\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
 
 
 @Client.on_message(command2(["مدة التشغيل","مده التشغيل","وقت التشغيل"]))
