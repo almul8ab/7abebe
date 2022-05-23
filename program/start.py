@@ -52,7 +52,7 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""✨ **مرحبا {message.from_user.mention()} !**\n
-💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **انا بوت استطيع تشغيل الموسيقي والفديو في محادثتك الصوتية
+💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **انا بوت استطيع تشغيل الموسيقى والفيديو في محادثتك الصوتية
 💡 **تعلم طريقة تشغيلي واوامر التحكم بي عن طريق  » 📚 الاوامر !**
 
 🔖 **لتعلم طريقة تشغيلي بمجموعتك اضغط علي » ❓اوامر اساسيه **
@@ -75,7 +75,7 @@ async def start_(client: Client, message: Message):
                         "👥 كروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "↬ 𝙇𝒊𝙤𝙉 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "↬ 𝙹𝙴𝙿𝚃𝙷𝙾𝙽 𝙰𝚁𝙰𝙱 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
             ]
@@ -98,7 +98,7 @@ async def alive(client: Client, message: Message):
             [
                 InlineKeyboardButton("✨ كروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "↬ 𝙇𝒊𝙤𝙉 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "↬ 𝙹𝙴𝙿𝚃𝙷𝙾𝙽 𝙰𝚁𝙰𝙱 ⟊", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -125,7 +125,7 @@ async def alive(client: Client, message: Message):
 @Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
 async def ping_pong(client: Client, message: Message):
     start = time()
-    m_reply = await message.reply_text("جاري قياس البينج...")
+    m_reply = await message.reply_text("جاري قياس البينك...")
     delta_ping = time() - start
     await m_reply.edit_text("🏓 بينج\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
 
