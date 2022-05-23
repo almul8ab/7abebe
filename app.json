@@ -1,16 +1,16 @@
 {
-    "name": "『 علوش 』『Musíc』",
-    "description": "بوت تشغيل الموسيقي والفديو في لالمحادثة الصوتيى",
-    "logo": "https://telegra.ph/file/cbefab50d720cd7cb5ca8.jpg",
+    "name": "『 جيبثون 』『Musíc』",
+    "description": "بوت تشغيل الموسيقي والفيديو في االمحادثة الصوتية",
+    "logo": "",
     "keywords": [
         "محادثات صوتية",
         "بوتات تيلجرام",
         "تشغيل فديو",
         "بيوجرام"
     ],
-    "website": "https://t.me/xb_bk",
+    "website": "https://t.me/jepthon",
     "repository": "https://github.com/alfaransy/REWYT",
-    "success_url": "https://t.me/xb_bp",
+    "success_url": "https://t.me/jepthon",
     "env": {
         "API_ID": {
             "description": "api id تستطيع جلبه من my.telegram.org",
@@ -47,22 +47,22 @@
         "SUDO_USERS": {
             "description": "ايدي المطورين",
             "required": true,
-            "value": "1047777673"
+            "value": "705475246"
         },
         "GROUP_SUPPORT": {
             "description": "معرف جروب الدعم بدون @",
             "required": true,
-            "value": "xb_bk"
+            "value": "jepthonsupport"
         },
         "UPDATES_CHANNEL": {
             "description": "معرف قناتك بدون @",
             "required": true,
-            "value": "xb_bp"
+            "value": "jepthon"
         },
         "OWNER_NAME": {
             "description": "معرف المطور بدون @",
             "required": true,
-            "value": "E_T_B"
+            "value": "lMl10l"
         },
         "ALIVE_NAME": {
             "description": "اسم حسابك علي التيلجرام",
