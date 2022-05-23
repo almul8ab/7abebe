@@ -87,9 +87,6 @@ async def play(c: Client, m: Message):
     if not a.can_invite_users:
         await m.reply_text("قم بي اعطائي الصلاحية التالية:" + "\n\n» ❌ __دعوة المستخدمين__")
         return
-    if not a.can_restrict_members:
-        await m.reply_text("قم بي اعطائي الصلاحية التالية:" + "\n\n» ❌ __حظر المستخدمين__")
-        return
     try:
         ubot = await user.get_me()
         b = await c.get_chat_member(chat_id, ubot.id)
