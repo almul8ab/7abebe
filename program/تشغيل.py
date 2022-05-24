@@ -232,7 +232,7 @@ async def play(c: Client, m: Message):
                             f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         )
                         await m.reply_photo(
-                            photo=f"{IMG_1}",
+                            photo=thumb,
                             caption=f"💡 **تم اضافتها الي قائمة التشغيل الدور »** `{pos}`\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n🎧 **مطلوبة بوسطة:** {requester}",
                             reply_markup=keyboard,
                         )
