@@ -82,7 +82,7 @@ async def start_(client: Client, message: Message):
         ),
         disable_web_page_preview=True,
     )
-    await USER.add_contact(message.from_user.id, "xb_bp")
+    await USER.add_contact(message.from_user.id, "@Jepthon")
 
 
 @Client.on_message(
