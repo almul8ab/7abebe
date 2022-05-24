@@ -5,7 +5,7 @@
 import asyncio
 import re
 
-from config import ASSISTANT_NAME, IMG_1, IMG_2
+from config import ASSISTANT_NAME
 from driver.filters import command2, other_filters
 from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
@@ -133,7 +133,7 @@ async def play(c: Client, m: Message):
                 pos = add_to_queue(chat_id, songname, dl, link, "Audio", 0)
                 await suhu.delete()
                 await m.reply_photo(
-                    photo=f"{IMG_1}",
+                    photo=thumb,
                     caption=f"💡 **تم اضافتها الي قائمة التشغيل الدور »** `{pos}`\n\n🏷 **الاسم:** [{songname}]({link})\n💭 **المحادثة:** `{chat_id}`\n🎧 **مطلوبة بوسطة:** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
@@ -150,7 +150,7 @@ async def play(c: Client, m: Message):
                 await suhu.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
-                    photo=f"{IMG_2}",
+                    photo=thumb,
                     caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({link})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                     reply_markup=keyboard,
                 )
@@ -199,7 +199,7 @@ async def play(c: Client, m: Message):
                                 await suhu.delete()
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 await m.reply_photo(
-                                    photo=f"{IMG_2}",
+                                    photo=thumb,
                                     caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                                     reply_markup=keyboard,
                                 )
@@ -249,7 +249,7 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
-                                photo=f"{IMG_2}",
+                                photo=thumb,
                                 caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                                 reply_markup=keyboard,
                             )
