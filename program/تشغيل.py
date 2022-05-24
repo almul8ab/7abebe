@@ -1,11 +1,7 @@
-# Copyright (C) 2021 By Veez Music-Project
-# Commit Start Date 20/10/2021
-# Finished On 28/10/2021
-
 import asyncio
 import re
 
-from config import ASSISTANT_NAME
+from config import ASSISTANT_NAME, IMG_1, IMG_2
 from driver.filters import command2, other_filters
 from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
@@ -15,7 +11,6 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioPiped
 from youtubesearchpython import VideosSearch
-from driver.thumbnails import gen_thumb
 
 
 def ytsearch(query):
@@ -119,10 +114,6 @@ async def play(c: Client, m: Message):
         if replied.audio or replied.voice:
             suhu = await replied.reply("📥 **تحميل الصوت...**")
             dl = await replied.download()
-            query = message.text.split(None, 1)[1]
-            (
-                thumb,
-            ) = get_yt_info_query(query)
             link = replied.link
             if replied.audio:
                 if replied.audio.title:
@@ -135,10 +126,10 @@ async def play(c: Client, m: Message):
             elif replied.voice:
                 songname = "Voice Note"
             if chat_id in QUEUE:
-                pos = add_to_queue(chat_id, songname, dl, link, thumb, "Audio", 0)
+                pos = add_to_queue(chat_id, songname, dl, link, "Audio", 0)
                 await suhu.delete()
                 await m.reply_photo(
-                    photo=thumb,
+                    photo=f"{IMG_1}",
                     caption=f"💡 **تم اضافتها الي قائمة التشغيل الدور »** `{pos}`\n\n🏷 **الاسم:** [{songname}]({link})\n💭 **المحادثة:** `{chat_id}`\n🎧 **مطلوبة بوسطة:** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
@@ -151,11 +142,11 @@ async def play(c: Client, m: Message):
                     ),
                     stream_type=StreamType().local_stream,
                 )
-                add_to_queue(chat_id, songname, dl, link, thumb, "Audio", 0)
+                add_to_queue(chat_id, songname, dl, link, "Audio", 0)
                 await suhu.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
-                    photo=thumb,
+                    photo=f"{IMG_2}",
                     caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({link})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                     reply_markup=keyboard,
                 )
@@ -170,9 +161,6 @@ async def play(c: Client, m: Message):
             else:
                 suhu = await m.reply("🔎 **جاري البحث...**")
                 query = m.text.split(None, 1)[1]
-                (
-                   thumb,
-                ) = get_yt_info_query(query)
                 search = ytsearch(query)
                 if search == 0:
                     await suhu.edit("❌ لم اجد نتائج")
@@ -203,11 +191,11 @@ async def play(c: Client, m: Message):
                                     ),
                                     stream_type=StreamType().local_stream,
                                 )
-                                add_to_queue(chat_id, songname, ytlink, url, thumb, "Audio", 0)
+                                add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                                 await suhu.delete()
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 await m.reply_photo(
-                                    photo=thumb,
+                                    photo=f"{IMG_2}",
                                     caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                                     reply_markup=keyboard,
                                 )
@@ -223,9 +211,6 @@ async def play(c: Client, m: Message):
         else:
             suhu = await m.reply("🔎 **جاري البحث...**")
             query = m.text.split(None, 1)[1]
-            (
-               thumb,
-            ) = get_yt_info_query(query)
             search = ytsearch(query)
             if search == 0:
                 await suhu.edit("❌ لم اجد اي نتائج")
@@ -237,13 +222,13 @@ async def play(c: Client, m: Message):
                     await suhu.edit(f"❌ خطأ في مكاتب السورس\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
-                        pos = add_to_queue(chat_id, songname, ytlink, url, thumb, "Audio", 0)
+                        pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                         await suhu.delete()
                         requester = (
                             f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         )
                         await m.reply_photo(
-                            photo=thumb,
+                            photo=f"{IMG_1}",
                             caption=f"💡 **تم اضافتها الي قائمة التشغيل الدور »** `{pos}`\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n🎧 **مطلوبة بوسطة:** {requester}",
                             reply_markup=keyboard,
                         )
@@ -256,15 +241,14 @@ async def play(c: Client, m: Message):
                                 ),
                                 stream_type=StreamType().local_stream,
                             )
-                            add_to_queue(chat_id, songname, ytlink, url, thumb, "Audio", 0)
+                            add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
-                                photo=thumb,
+                                photo=f"{IMG_2}",
                                 caption=f"💡 **تم تشغيل الموسيقي.**\n\n🏷 **الاسم:** [{songname}]({url})\n💭 **المحادثة:** `{chat_id}`\n💡 **الحالة:** يعمل\n🎧 **مطلوبة بوسطة:** {requester}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
                             await suhu.delete()
                             await m.reply_text(f"🚫 خطأ: `{ep}`")
-
