@@ -119,6 +119,10 @@ async def play(c: Client, m: Message):
         if replied.audio or replied.voice:
             suhu = await replied.reply("📥 **تحميل الصوت...**")
             dl = await replied.download()
+            query = message.text.split(None, 1)[1]
+            (
+                thumb,
+            ) = get_yt_info_query(query)
             link = replied.link
             if replied.audio:
                 if replied.audio.title:
@@ -166,6 +170,9 @@ async def play(c: Client, m: Message):
             else:
                 suhu = await m.reply("🔎 **جاري البحث...**")
                 query = m.text.split(None, 1)[1]
+                (
+                   thumb,
+                ) = get_yt_info_query(query)
                 search = ytsearch(query)
                 if search == 0:
                     await suhu.edit("❌ لم اجد نتائج")
@@ -216,6 +223,9 @@ async def play(c: Client, m: Message):
         else:
             suhu = await m.reply("🔎 **جاري البحث...**")
             query = m.text.split(None, 1)[1]
+            (
+               thumb,
+            ) = get_yt_info_query(query)
             search = ytsearch(query)
             if search == 0:
                 await suhu.edit("❌ لم اجد اي نتائج")
