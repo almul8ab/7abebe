@@ -16,3 +16,4 @@ heroku3
 psutil
 future
 wget
+pillow
