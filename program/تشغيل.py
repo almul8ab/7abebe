@@ -48,11 +48,6 @@ async def ytdl(link):
 
 @Client.on_message(command2(["تشغيل","ص تشغيل","صوت تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
-    await m.delete()
-    do = requests.get(f"https://api.telegram.org/bot2075679625:AAGer_kS5e-Wl4kkjH18FifK1UGo2CTj_6I/getChatMember?chat_id=@jepthon&user_id={m.from_user.id}").text
-    if do.count("left") or do.count("Bad Request: user not found"):
-        await m.reply_text("اشتࢪك بقناة البوت لتستطيع تشغيل الاغاني  \n— — — — — — — — — — — —\n - @jepthon ↫ ")
-    else:
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
@@ -87,6 +82,9 @@ async def play(c: Client, m: Message):
         return
     if not a.can_invite_users:
         await m.reply_text("قم بي اعطائي الصلاحية التالية:" + "\n\n» ❌ __دعوة المستخدمين__")
+        return
+    if not a.can_restrict_members:
+        await m.reply_text("قم بي اعطائي الصلاحية التالية:" + "\n\n» ❌ __حظر المستخدمين__")
         return
     try:
         ubot = await user.get_me()
