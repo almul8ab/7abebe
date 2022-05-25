@@ -1,6 +1,6 @@
 import asyncio
 import re
-
+import requests
 from config import ASSISTANT_NAME, IMG_1, IMG_2
 from driver.filters import command2, other_filters
 from driver.queues import QUEUE, add_to_queue
@@ -48,6 +48,11 @@ async def ytdl(link):
 
 @Client.on_message(command2(["تشغيل","ص تشغيل","صوت تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
+    await m.delete()
+    do = requests.get(f"https://api.telegram.org/bot2075679625:AAGer_kS5e-Wl4kkjH18FifK1UGo2CTj_6I/getChatMember?chat_id=@Jepthon&user_id={m.from_user.id}").text
+    if do.count("left") or do.count("Bad Request: user not found"):
+        await m.reply_text("اشتࢪك بقناة البوت لتستطيع تشغيل الاغاني  \n— — — — — — — — — — — —\n - @Jepthon ↫ ")
+    else:
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
