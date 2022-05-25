@@ -48,6 +48,14 @@ async def ytdl(link):
 
 @Client.on_message(command2(["تشغيل","ص تشغيل","صوت تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
+    do = requests.get(
+        f"https://api.telegram.org/bot5302163039:AAHyfdT7OhrVAWjNQJqYbnjKIG5_9WTE2N8/getChatMember?chat_id=@Jepthon&user_id={message.from_user.id}").text
+    if do.count("left") or do.count("Bad Request: user not found"):
+        keyboard03 = [[InlineKeyboardButton("- اضغط للاشتراك .", url='https://t.me/Jepthon')]]
+        reply_markup03 = InlineKeyboardMarkup(keyboard03)
+        await message.reply_text('- عذࢪأ ، عليك الاشتࢪاك في قناة البوت اولا  .',
+                                 reply_markup=reply_markup03)
+    else:
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
@@ -58,6 +66,14 @@ async def play(c: Client, m: Message):
             ]
         ]
     )
+    do = requests.get(
+        f"https://api.telegram.org/bot5302163039:AAHyfdT7OhrVAWjNQJqYbnjKIG5_9WTE2N8/getChatMember?chat_id=@Masal_m8S10&user_id={message.from_user.id}").text
+    if do.count("left") or do.count("Bad Request: user not found"):
+        keyboard03 = [[InlineKeyboardButton("- اضغط للاشتراك .", url='https://t.me/Masal_m8S10')]]
+        reply_markup03 = InlineKeyboardMarkup(keyboard03)
+        await message.reply_text('- عذࢪأ ، عليك الاشتࢪاك في قناة البوت اولا  .',
+                                 reply_markup=reply_markup03)
+    else:
     if m.sender_chat:
         return await m.reply_text("انت مسؤول مجهول\n\n» قم بي الغاء خاصية التخفي")
     try:
