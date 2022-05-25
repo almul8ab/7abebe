@@ -48,13 +48,10 @@ async def ytdl(link):
 
 @Client.on_message(command2(["تشغيل","ص تشغيل","صوت تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
-    do = requests.get(
-        f"https://api.telegram.org/bot5302163039:AAHyfdT7OhrVAWjNQJqYbnjKIG5_9WTE2N8/getChatMember?chat_id=@Jepthon&user_id={message.from_user.id}").text
+    await m.delete()
+    do = requests.get(f"https://api.telegram.org/bot2075679625:AAGer_kS5e-Wl4kkjH18FifK1UGo2CTj_6I/getChatMember?chat_id=@jepthon&user_id={m.from_user.id}").text
     if do.count("left") or do.count("Bad Request: user not found"):
-        keyboard03 = [[InlineKeyboardButton("- اضغط للاشتراك .", url='https://t.me/Jepthon')]]
-        reply_markup03 = InlineKeyboardMarkup(keyboard03)
-        await message.reply_text('- عذࢪأ ، عليك الاشتࢪاك في قناة البوت اولا  .',
-                                 reply_markup=reply_markup03)
+        await m.reply_text("اشتࢪك بقناة البوت لتستطيع تشغيل الاغاني  \n— — — — — — — — — — — —\n - @jepthon ↫ ")
     else:
     replied = m.reply_to_message
     chat_id = m.chat.id
